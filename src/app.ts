@@ -1,6 +1,7 @@
 // hello from claudepilot
 import express from 'express';
 import greetingRouter from './routes/greeting';
+import buenosDiasRouter from './routes/buenos-dias';
 
 const app = express();
 
@@ -11,5 +12,6 @@ app.get('/health', (_req, res) => {
 });
 
 app.use('/greeting', greetingRouter);
+app.use('/buenos-dias', buenosDiasRouter);
 
 export default app;
