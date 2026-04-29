@@ -3,12 +3,14 @@ import { getGreeting } from '../services/greeting.service';
 
 const router = Router();
 
-router.get('/', (_req: Request, res: Response) => {
-  res.json(getGreeting());
+router.get('/', (req: Request, res: Response) => {
+  const lang = req.query.lang as 'en' | 'es' | undefined;
+  res.json(getGreeting(undefined, lang));
 });
 
 router.get('/:name', (req: Request, res: Response) => {
-  res.json(getGreeting(req.params.name));
+  const lang = req.query.lang as 'en' | 'es' | undefined;
+  res.json(getGreeting(req.params.name, lang));
 });
 
 export default router;

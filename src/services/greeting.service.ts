@@ -3,9 +3,11 @@ export interface Greeting {
   timestamp: string;
 }
 
-export function getGreeting(name?: string): Greeting {
+export function getGreeting(name?: string, language?: 'en' | 'es'): Greeting {
+  const resolvedName = name ?? 'world';
+  const greeting = language === 'es' ? 'Hola' : 'Hello';
   return {
-    message: `Hello, ${name ?? 'world'}!`,
+    message: `${greeting}, ${resolvedName}!`,
     timestamp: new Date().toISOString(),
   };
 }
